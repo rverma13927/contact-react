@@ -1,14 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ContactCard from './ContactCard';
+
 // import List from 'semantic-ui-react';
 const ContactList = (props)=>{
   console.log(props);
 
   const deleteContactHandler = (id) => {
-    console.log("Fdf" +id)
     props.getContactId(id);
   };
-  const renderContactList = props.contact.map((contact) => {
+  // const contact = [{
+  //     id: 1,
+  //     name: "Deepak",
+  //     email : "dsv2065@gmail.com"
+  // }]
+  const renderContactList =props.contact.map((contact) => {
     return (
       <ContactCard
         contact={contact}
@@ -17,6 +23,12 @@ const ContactList = (props)=>{
       />
     );
   });
-  return <div className="ui celled list">{renderContactList}</div>;
+  return( <div className='main'>
+              <h2>Contact List
+                <Link to="/add">  <button className='ui button blue right'>Add</button></Link></h2>
+        
+                <div className="ui celled list">{renderContactList}</div> 
+    
+      </div>);
 }
 export default ContactList;
